@@ -17,6 +17,14 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "ngx-cpf-cnpj": [
+        "dist/ngx-cpf-cnpj"
+      ],
+      "ngx-cpf-cnpj/*": [
+        "dist/ngx-cpf-cnpj/*"
+      ]
+    }
   }
 }

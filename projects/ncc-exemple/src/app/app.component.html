@@ -1,0 +1,7 @@
+<form (submit)="submitTest()" #testForm="ngForm">
+<input name="cpfCnpj" type="text" nccCpfCnpjValidator name="cpfCnpj" #cpfCnpjv="ngModel" nccCpfCnpjMask [(ngModel)]="teste" >
+<button  type="submit">Submit</button>
+<div padding *ngIf="testForm.submitted && cpfCnpjv?.invalid" class="error">
+  Cpf/Cnpj Inválido
+</div>
+</form>
