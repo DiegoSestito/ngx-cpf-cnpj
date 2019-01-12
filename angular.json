@@ -92,34 +92,34 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "ncc-tester:build"
+            "browserTarget": "ncc-exemple:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "ncc-tester:build:production"
+              "browserTarget": "ncc-exemple:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "ncc-tester:build"
+            "browserTarget": "ncc-exemple:build"
           }
         },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "projects/ncc-tester/src/test.ts",
-            "polyfills": "projects/ncc-tester/src/polyfills.ts",
-            "tsConfig": "projects/ncc-tester/tsconfig.spec.json",
-            "karmaConfig": "projects/ncc-tester/karma.conf.js",
+            "main": "projects/ncc-exemple/src/test.ts",
+            "polyfills": "projects/ncc-exemple/src/polyfills.ts",
+            "tsConfig": "projects/ncc-exemple/tsconfig.spec.json",
+            "karmaConfig": "projects/ncc-exemple/karma.conf.js",
             "styles": [
-              "projects/ncc-tester/src/styles.css"
+              "projects/ncc-exemple/src/styles.css"
             ],
             "scripts": [],
             "assets": [
-              "projects/ncc-tester/src/favicon.ico",
-              "projects/ncc-tester/src/assets"
+              "projects/ncc-exemple/src/favicon.ico",
+              "projects/ncc-exemple/src/assets"
             ]
           }
         },
@@ -127,8 +127,8 @@
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "projects/ncc-tester/tsconfig.app.json",
-              "projects/ncc-tester/tsconfig.spec.json"
+              "projects/ncc-exemple/tsconfig.app.json",
+              "projects/ncc-exemple/tsconfig.spec.json"
             ],
             "exclude": [
               "**/node_modules/**"
@@ -145,19 +145,19 @@
         "e2e": {
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
-            "protractorConfig": "projects/ncc-tester-e2e/protractor.conf.js",
-            "devServerTarget": "ncc-tester:serve"
+            "protractorConfig": "projects/ncc-exemple-e2e/protractor.conf.js",
+            "devServerTarget": "ncc-exemple:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "ncc-tester:serve:production"
+              "devServerTarget": "ncc-exemple:serve:production"
             }
           }
         },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": "projects/ncc-tester-e2e/tsconfig.e2e.json",
+            "tsConfig": "projects/ncc-exemple-e2e/tsconfig.e2e.json",
             "exclude": [
               "**/node_modules/**"
             ]
