@@ -1,20 +1,19 @@
-import { Directive, HostListener } from "@angular/core";
+import { Directive, HostListener, Renderer2, ElementRef } from "@angular/core";
 import { NgModel } from "@angular/forms";
-import { NgxCpfCnpjService } from "./ngx-cpf-cnpj.service";
+import { NgxCpfCnpj } from "./ngx-cpf-cnpj";
 @Directive({
-  selector: "[nccCpfCnpjMask] [ngModel]",
-  providers: [NgModel]
+  selector: "[nccCpfCnpjMask]"
 })
 export class CpfCnpjMaskDirective {
-  constructor(
-    private model: NgModel,
-    private cpfCnpjService: NgxCpfCnpjService
-  ) {}
+  constructor(private renderer: Renderer2, private el: ElementRef) {}
 
   @HostListener("input", ["$event"]) onInput(event) {
     if (event.target.value.length <= 18) {
-      this.model.valueAccessor.writeValue(
-        this.cpfCnpjService.convertToCpfCnpj(event.target.value)
+      console.log(this.el.nativeElement);
+      this.renderer.setProperty(
+        this.el.nativeElement,
+        "value",
+        NgxCpfCnpj.convertToCpfCnpj(event.target.value)
       );
     }
   }
