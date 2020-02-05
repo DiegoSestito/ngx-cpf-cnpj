@@ -4,12 +4,8 @@ import { CpfCnpjValidatorDirective } from "./cpf-cnpj-validator.directive";
 import { CpfCnpjValidator } from "./cpf-cnpj.validator";
 
 @NgModule({
-  declarations: [
-    CpfCnpjMaskDirective,
-    CpfCnpjValidatorDirective,
-    CpfCnpjValidator
-  ],
+  declarations: [CpfCnpjMaskDirective, CpfCnpjValidatorDirective],
   imports: [],
-  exports: [CpfCnpjMaskDirective, CpfCnpjValidatorDirective, CpfCnpjValidator]
+  exports: [CpfCnpjMaskDirective, CpfCnpjValidatorDirective]
 })
 export class NgxCpfCnpjModule {}
