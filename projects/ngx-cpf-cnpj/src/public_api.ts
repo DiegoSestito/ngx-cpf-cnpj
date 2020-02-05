@@ -3,3 +3,4 @@
  */
 
 export * from "./lib/ngx-cpf-cnpj.module";
+export * from "./lib/cpf-cnpj.validator";
