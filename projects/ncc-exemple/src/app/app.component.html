@@ -1,7 +1,30 @@
 <form (submit)="submitTest()" #testForm="ngForm">
-<input name="cpfCnpj" type="text" nccCpfCnpjValidator name="cpfCnpj" #cpfCnpjv="ngModel" nccCpfCnpjMask [(ngModel)]="teste" >
-<button  type="submit">Submit</button>
-<div padding *ngIf="testForm.submitted && cpfCnpjv?.invalid" class="error">
-  Cpf/Cnpj Inválido
-</div>
+  <input
+    id="cpfCnpj"
+    name="cpfCnpj"
+    type="text"
+    nccCpfCnpjValidator
+    name="cpfCnpj"
+    #cpfCnpjv="ngModel"
+    nccCpfCnpjMask
+    [(ngModel)]="teste"
+  />
+  <button type="submit">Submit</button>
+  <div padding *ngIf="testForm.submitted && cpfCnpjv?.invalid" class="error">
+    Cpf/Cnpj Inválido
+  </div>
+</form>
+
+<form (submit)="submitReactive(formTest)" [formGroup]="formTest">
+  <input
+    id="cpfCnpjReactive"
+    name="cpfCnpj"
+    formControlName="cpfCnpj"
+    type="text"
+    nccCpfCnpjMask
+  />
+  <button type="submit">Submit</button>
+  <div *ngIf="formTest.controls.cpfCnpj.errors">
+    Cpf/Cnpj Inválido
+  </div>
 </form>

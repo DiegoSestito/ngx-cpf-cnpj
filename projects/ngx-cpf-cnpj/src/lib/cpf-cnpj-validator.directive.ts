@@ -1,20 +1,24 @@
-import { Directive } from '@angular/core';
-import { NG_VALIDATORS, Validator, ValidatorFn, FormControl } from '@angular/forms';
-import { NgxCpfCnpjService } from './ngx-cpf-cnpj.service';
+import { Directive } from "@angular/core";
+import {
+  NG_VALIDATORS,
+  Validator,
+  ValidatorFn,
+  FormControl
+} from "@angular/forms";
+import { NgxCpfCnpj } from "./ngx-cpf-cnpj";
 
 @Directive({
-  selector: '[nccCpfCnpjValidator] [ngModel]',
+  selector: "[nccCpfCnpjValidator] [ngModel]",
   providers: [
     {
       provide: NG_VALIDATORS,
       useExisting: CpfCnpjValidatorDirective,
       multi: true
-    }]
+    }
+  ]
 })
-export class CpfCnpjValidatorDirective implements Validator  {
-
+export class CpfCnpjValidatorDirective implements Validator {
   validator: ValidatorFn;
-  private cpfCnpjService: NgxCpfCnpjService = new NgxCpfCnpjService();
   constructor() {
     this.validator = this.cpfCnpjValidator();
   }
@@ -27,9 +31,9 @@ export class CpfCnpjValidatorDirective implements Validator  {
     return (c: FormControl) => {
       let value: string = <string>c.value;
       if (value != null) {
-        value = this.cpfCnpjService.getDigitos(value);
+        value = NgxCpfCnpj.getDigitos(value);
         if (value.length === 11) {
-          if (this.cpfCnpjService.cpfIsValid(value)) {
+          if (NgxCpfCnpj.cpfIsValid(value)) {
             return null;
           } else {
             return {
@@ -39,7 +43,7 @@ export class CpfCnpjValidatorDirective implements Validator  {
             };
           }
         } else if (value.length === 14) {
-          if (this.cpfCnpjService.cnpjIsValid(value)) {
+          if (NgxCpfCnpj.cnpjIsValid(value)) {
             return null;
           } else {
             return {
