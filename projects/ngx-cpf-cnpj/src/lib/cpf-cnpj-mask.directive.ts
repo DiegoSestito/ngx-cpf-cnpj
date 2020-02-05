@@ -9,7 +9,6 @@ export class CpfCnpjMaskDirective {
 
   @HostListener("input", ["$event"]) onInput(event) {
     if (event.target.value.length <= 18) {
-      console.log(this.el.nativeElement);
       this.renderer.setProperty(
         this.el.nativeElement,
         "value",

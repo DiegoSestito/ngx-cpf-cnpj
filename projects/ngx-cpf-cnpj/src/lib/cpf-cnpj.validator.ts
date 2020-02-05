@@ -7,7 +7,6 @@ export interface ValidationResult {
 
 export class CpfCnpjValidator {
   public static validate(control: FormControl): ValidationResult {
-    console.log("valid", NgxCpfCnpj.cpfIsValid(control.value), control.value);
     return NgxCpfCnpj.cpfIsValid(control.value) ? null : { invalid: false };
   }
 }
