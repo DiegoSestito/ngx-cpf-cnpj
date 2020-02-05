@@ -2,7 +2,7 @@ export class NgxCpfCnpj {
   constructor() {}
 
   public static convertToCpfCnpj(num) {
-    if (num && num.length <= 14) {
+    if (num && num.length > 3 && num.length <= 14) {
       const replaceByLength = {
         4: { searchValue: /(\d+)(\d{3})/, newValue: "$1.$2" },
         5: { searchValue: /(\d+)(\d{3})/, newValue: "$1.$2" },
