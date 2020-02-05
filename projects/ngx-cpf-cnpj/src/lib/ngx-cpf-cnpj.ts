@@ -2,50 +2,40 @@ export class NgxCpfCnpj {
   constructor() {}
 
   public static convertToCpfCnpj(num) {
-    if (num) {
+    if (num && num.length > 3 && num.length <= 14) {
+      const replaceByLength = {
+        4: { searchValue: /(\d+)(\d{3})/, newValue: "$1.$2" },
+        5: { searchValue: /(\d+)(\d{3})/, newValue: "$1.$2" },
+        6: { searchValue: /(\d+)(\d{3})/, newValue: "$1.$2" },
+        7: { searchValue: /(\d+)(\d{3})(\d{3})/, newValue: "$1.$2.$3" },
+        8: { searchValue: /(\d+)(\d{3})(\d{3})/, newValue: "$1.$2.$3" },
+        9: { searchValue: /(\d+)(\d{3})(\d{3})/, newValue: "$1.$2.$3" },
+        10: {
+          searchValue: /(\d+)(\d{3})(\d{3})(\d{1})/,
+          newValue: "$1.$2.$3-$4"
+        },
+        11: {
+          searchValue: /(\d+)(\d{3})(\d{3})(\d{2})/,
+          newValue: "$1.$2.$3-$4"
+        },
+        12: {
+          searchValue: /(\d+)(\d{3})(\d{3})(\d{4})/,
+          newValue: "$1.$2.$3-$4"
+        },
+        13: {
+          searchValue: /(\d+)(\d{3})(\d{3})(\d{4})(\d{2})/,
+          newValue: "$1.$2.$3/$4-$5"
+        },
+        14: {
+          searchValue: /(\d+)(\d{3})(\d{3})(\d{4})(\d{2})/,
+          newValue: "$1.$2.$3/$4-$5"
+        }
+      };
+
       num = num.toString();
       num = NgxCpfCnpj.getDigitos(num);
-      switch (num.length) {
-        case 4:
-          num = num.replace(/(\d+)(\d{3})/, "$1.$2");
-          break;
-        case 5:
-          num = num.replace(/(\d+)(\d{3})/, "$1.$2");
-          break;
-        case 6:
-          num = num.replace(/(\d+)(\d{3})/, "$1.$2");
-          break;
-        case 7:
-          num = num.replace(/(\d+)(\d{3})(\d{3})/, "$1.$2.$3");
-          break;
-        case 8:
-          num = num.replace(/(\d+)(\d{3})(\d{3})/, "$1.$2.$3");
-          break;
-        case 9:
-          num = num.replace(/(\d+)(\d{3})(\d{3})/, "$1.$2.$3");
-          break;
-        case 10:
-          num = num.replace(/(\d+)(\d{3})(\d{3})(\d{1})/, "$1.$2.$3-$4");
-          break;
-        case 11:
-          num = num.replace(/(\d+)(\d{3})(\d{3})(\d{2})/, "$1.$2.$3-$4");
-          break;
-        case 12:
-          num = num.replace(/(\d+)(\d{3})(\d{3})(\d{4})/, "$1.$2.$3/$4");
-          break;
-        case 13:
-          num = num.replace(
-            /(\d+)(\d{3})(\d{3})(\d{4})(\d{2})/,
-            "$1.$2.$3/$4-$5"
-          );
-          break;
-        case 14:
-          num = num.replace(
-            /(\d+)(\d{3})(\d{3})(\d{4})(\d{2})/,
-            "$1.$2.$3/$4-$5"
-          );
-          break;
-      }
+      const replaceObject = replaceByLength[num.length];
+      num = num.replace(replaceObject.searchValue, replaceObject.newValue);
     }
     return num;
   }
