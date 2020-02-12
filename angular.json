@@ -14,6 +14,11 @@
           "options": {
             "tsConfig": "projects/ngx-cpf-cnpj/tsconfig.lib.json",
             "project": "projects/ngx-cpf-cnpj/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/ngx-cpf-cnpj/tsconfig.lib.prod.json"
+            }
           }
         },
         "test": {
@@ -48,6 +53,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "aot": true,
             "outputPath": "dist/ncc-exemple",
             "index": "projects/ncc-exemple/src/index.html",
             "main": "projects/ncc-exemple/src/main.ts",
@@ -84,6 +90,10 @@
                   "type": "initial",
                   "maximumWarning": "2mb",
                   "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb"
                 }
               ]
             }
@@ -166,5 +176,8 @@
       }
     }
   },
-  "defaultProject": "ngx-cpf-cnpj"
+  "defaultProject": "ngx-cpf-cnpj",
+  "cli": {
+    "analytics": false
+  }
 }

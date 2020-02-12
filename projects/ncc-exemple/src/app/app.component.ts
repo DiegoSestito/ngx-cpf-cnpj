@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { FormGroup, FormBuilder } from "@angular/forms";
+import { FormGroup, FormBuilder, NgForm } from "@angular/forms";
 import { CpfCnpjValidator } from "projects/ngx-cpf-cnpj/src/lib/cpf-cnpj.validator";
 
 @Component({
@@ -9,8 +9,8 @@ import { CpfCnpjValidator } from "projects/ngx-cpf-cnpj/src/lib/cpf-cnpj.validat
 })
 export class AppComponent implements OnInit {
   title = "ncc-exemple";
-  private teste: string;
-  private formTest: FormGroup;
+  public teste: string;
+  public formTest: FormGroup;
 
   constructor(private fb: FormBuilder) {}
 
@@ -24,7 +24,7 @@ export class AppComponent implements OnInit {
     console.log("submit", this.teste);
   }
 
-  submitReactive() {
+  submitReactive(form: FormGroup) {
     console.log("submit", this.formTest.value.cpfCnpj);
   }
 }
